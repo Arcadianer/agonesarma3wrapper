@@ -217,7 +217,7 @@ public class Core {
 	private void parse(String line) {
 		String[] data = line.split(" ");
 		StringBuilder message = new StringBuilder();
-		for (int i = 1; i < data.length; i++) {
+		for (int i = 2; i < data.length; i++) {
 			if (!(i == data.length - 1)) {
 				message.append(data[i] + " ");
 			} else {
