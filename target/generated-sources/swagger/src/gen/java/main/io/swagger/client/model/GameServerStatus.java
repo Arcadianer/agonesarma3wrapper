@@ -29,7 +29,7 @@ import java.util.List;
 /**
  * GameServerStatus
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-02-08T15:46:47.191+01:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-02-11T20:55:17.626+01:00")
 public class GameServerStatus {
   @SerializedName("state")
   private String state = null;

@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>manuel.fun.arma</groupId>
 	<artifactId>agonesarmaclient</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<dependencies>
 		<dependency>
 			<groupId>com.squareup.okhttp3</groupId>

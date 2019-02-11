@@ -30,7 +30,7 @@ import java.io.IOException;
  * A GameServer Custom Resource Definition object We will only export those resources that make the most sense. Can always expand to more as needed.
  */
 @ApiModel(description = "A GameServer Custom Resource Definition object We will only export those resources that make the most sense. Can always expand to more as needed.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-02-08T15:46:47.191+01:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-02-11T20:55:17.626+01:00")
 public class SdkGameServer {
   @SerializedName("object_meta")
   private GameServerObjectMeta objectMeta = null;
