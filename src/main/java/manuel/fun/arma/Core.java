@@ -43,7 +43,7 @@ public class Core {
 			} catch (Exception e) {
 				log.info("Waiting for Agones Server ...");
 			}
-			
+
 			Thread.sleep(1000);
 		}
 		final ApiClient swagger = new ApiClient();
@@ -91,6 +91,7 @@ public class Core {
 	private HeardBeatRunnable beatRunnable;
 	private File logfile;
 	private boolean shutdown = false;
+	private boolean started = false;
 	int logidleTimeout = 500;
 	int logidleWarning = 400;
 	int logplayingTimeout = 7200;
@@ -172,8 +173,9 @@ public class Core {
 				break;
 			case idle:
 				// Ready Check
-				if (gamestate.players.get() == 0 && gamestate.playeridletime.get() == 1) {
+				if (started) {
 					log.info("Server Ready");
+					started=false;
 					gamestatelable.setValue("idle");
 					api.setLabel(gamestatelable);
 					api.ready(new SdkEmpty());
@@ -197,7 +199,7 @@ public class Core {
 					gamestate.status = GameStatus.idle;
 				}
 				playertimeoutcheck();
-				//logplayingoutcheck();
+				// logplayingoutcheck();
 				break;
 			default:
 				break;
@@ -216,14 +218,14 @@ public class Core {
 
 	private void parse(String line) {
 		String[] data = line.split(" ");
-		int skip=999;
-		for (int a = 0; a< data.length; a++) {
-			if(data[a].matches("[0-9[:]]+")) {
-				skip=a+1;
+		int skip = 999;
+		for (int a = 0; a < data.length; a++) {
+			if (data[a].matches("[0-9[:]]+")) {
+				skip = a + 1;
 				break;
 			}
 		}
-		if(skip==999) {
+		if (skip == 999) {
 			return;
 		}
 		StringBuilder message = new StringBuilder();
@@ -238,6 +240,7 @@ public class Core {
 		switch (message.toString()) {
 		case "Host identity created.":
 			gamestate.status = GameStatus.idle;
+			started = true;
 			break;
 
 		default:
@@ -272,6 +275,7 @@ public class Core {
 			api.setLabel(timeout);
 		}
 	}
+
 	private void logplayingoutcheck() throws ApiException {
 		if (gamestate.logidletime.get() == logplayingWarning) {
 			log.warning("Log Timout approaching");
