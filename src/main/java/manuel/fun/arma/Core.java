@@ -172,7 +172,7 @@ public class Core {
 				break;
 			case idle:
 				// Ready Check
-				if (gamestate.players.get() == 0 && gamestate.playeridletime.get() == 0) {
+				if (gamestate.players.get() == 0 && gamestate.playeridletime.get() == 1) {
 					log.info("Server Ready");
 					gamestatelable.setValue("idle");
 					api.setLabel(gamestatelable);
