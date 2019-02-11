@@ -216,8 +216,18 @@ public class Core {
 
 	private void parse(String line) {
 		String[] data = line.split(" ");
+		int skip=999;
+		for (int a = 0; a< data.length; a++) {
+			if(data[a].matches("[0-9[:]]+")) {
+				skip=a+1;
+				break;
+			}
+		}
+		if(skip==999) {
+			return;
+		}
 		StringBuilder message = new StringBuilder();
-		for (int i = 2; i < data.length; i++) {
+		for (int i = skip; i < data.length; i++) {
 			if (!(i == data.length - 1)) {
 				message.append(data[i] + " ");
 			} else {
