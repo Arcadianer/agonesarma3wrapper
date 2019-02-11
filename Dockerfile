@@ -1,5 +1,5 @@
 FROM openjdk:8-stretch
-LABLE version=0.0.1
+LABEL version=0.0.1
 VOLUME /logs
 RUN mkdir /client
 WORKDIR /client
